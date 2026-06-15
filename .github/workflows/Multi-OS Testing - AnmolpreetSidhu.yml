@@ -1,0 +1,53 @@
+name: Multi-OS Testing - Anmolpreet Sidhu
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  test-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Start message
+        run: echo "Testing on Ubuntu..."
+
+      - name: Display OS information
+        run: uname -a
+
+      - name: Create test file
+        run: echo "Ubuntu test by Anmol Sidhu" > test-ubuntu.txt
+
+      - name: Display file contents
+        run: cat test-ubuntu.txt
+
+      - name: Done message
+        run: echo "Ubuntu tests completed"
+
+
+  test-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Start message
+        run: echo "Testing on Windows..."
+
+      - name: Display OS information
+        run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+
+      - name: Create test file
+        run: echo "Windows test by Anmol Sidhu" > test-windows.txt
+
+      - name: Display file contents
+        run: type test-windows.txt
+
+      - name: Done message
+        run: echo "Windows tests completed"
